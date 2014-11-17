@@ -37,7 +37,7 @@
 <h3>
 <a id="basics" class="anchor" href="#basics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basics</h3>
 
-<p>Normally, Ruby flash messages are rendered server-side with perhaps a basic snippet of code in a layout view.  Something like this HAML could be be used in basic Rails 4.0 layout (using Bootstrap):</p>
+<p>Normally, Ruby flash messages are rendered server-side with perhaps a basic snippet of code in a layout view.  Something like this HAML could be used in basic Rails 4.0 layout (using Bootstrap):</p>
 
 <p><em>(app/views/layouts/application.html.haml)</em></p>
 
@@ -84,12 +84,11 @@ end
 <p>And this all works as fine as it goes.  Flash messages will be displayed on every page render.</p>
 
 <h3>
-<a id="reactjs" class="anchor" href="#reactjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>ReactJS</h3>
+<a id="react-and-ajax" class="anchor" href="#react-and-ajax" aria-hidden="true"><span class="octicon octicon-link"></span></a>React and AJAX</h3>
 
 <p>However, if you're writing a <a href="http://facebook.github.io/react/index.html">React</a> project, you're likely using a fair amount of AJAX to take advantage of what React can do for you.   These notes don't discuss tying React into a Rails project -- there are several places to read about that -- instead, these notes assume you're using <a href="https://github.com/reactjs/react-rails">react-rails</a> to have your project automatically process React's JSX files in the asset pipeline.</p>
 
 <p>There are several answers on Stack Overflow about scripting for flash messaging in general Javascript; we can adapt this approach to take advantage of React (for instance, see <a href="http://stackoverflow.com/questions/366311/how-do-you-handle-rails-flash-with-ajax-requests">here</a> and <a href="http://stackoverflow.com/questions/21032465/rails-doesnt-display-flash-messages-after-ajax-call">here</a>)</p>
-
 
 <p>The value of React in this case is that it will automatically update the display when it's data state is updated, so really all that needs to be done is to pipe the data from the server to the client and let React do what it does.  The main details are pretty
 straightforward:
@@ -102,7 +101,7 @@ straightforward:
 </p>
 
 <h3>
-<a id="Transmit" class="anchor" href="#transmit" aria-hidden="true"><span class="octicon octicon-link"></span></a>Transmit</h3>
+<a id="transmit" class="anchor" href="#transmit" aria-hidden="true"><span class="octicon octicon-link"></span></a>Transmit</h3>
 <p>The StackOverflow notes pretty well spell this out, but here's my implementation.  One advantage of this approach is that it just uses the basic Ruby store of the flash data to keep processing to a minimum.</p>
 
 <p>Natively, flash messages are kept as an array of arrays.   Each child array of the main array is just two elements: the flash message type (`success`, `error`, etc.) and the supplied message text.  Since arrays don't transmit well without some notation to parse, it's just converted to JSON.</p>
@@ -123,7 +122,7 @@ end
 </code></pre>
 
 <h3>
-<a id="Receiving" class="anchor" href="#receiving" aria-hidden="true"><span class="octicon octicon-link"></span></a>Receiving</h3>
+<a id="receiving" class="anchor" href="#receiving" aria-hidden="true"><span class="octicon octicon-link"></span></a>Receiving</h3>
 
 <p>This part assumes that you'll put all the flash related handling into a single `.js.jsx`.  You don't have to of course, but it would keep related functionality together. If you do it the same way I did, then the below function would go in that file.</p>
 
@@ -151,7 +150,7 @@ end
 
 
 <h3>
-<a id="Component" class="anchor" href="#component" aria-hidden="true"><span class="octicon octicon-link"></span></a>Component</h3>
+<a id="component" class="anchor" href="#component" aria-hidden="true"><span class="octicon octicon-link"></span></a>Component</h3>
 
 <p>The component isn't too complicated, but a couple of things are worth a closer look.
 First, the props are immediately converted to state for use in the <code>render</code> function.  This normally is an anti-pattern in React, but it allows the state to be updated dynamically in response to AJAX calls.
@@ -209,8 +208,8 @@ var FlashMessages = React.createClass({
 </code></pre>
 
 <h3>
-<a id="Rendering" class="anchor" href="#rendering" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rendering</h3>
-<p>Here's a quick invocation for when the page is loaded.  Notice that <code>flashDiv</code> below came from a direct <code>React.render</code> (previously <code>React.renderComponent</code>) call. Note too that it uses a div id'ed by <code>#flash_messages</code>. </p>
+<a id="rendering" class="anchor" href="#rendering" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rendering</h3>
+<p>Here&apos;s a quick invocation for when the page is loaded.  Notice that <code>flashDiv</code> below came from a direct <code>React.render</code> (previously <code>React.renderComponent</code>) call. Note too that it uses a div id&apos;ed by <code>#flash_messages</code>. </p>
 
 <p>By simply calling the receiver function whenever an AJAX call completes, the React component's state is updated triggering an immediate re-render of the incoming flash messages.  Obviously, other JQuery events could be used to trigger a flash check, but for AJAX calls, this is
 the most obvious.</p>
@@ -225,7 +224,7 @@ the most obvious.</p>
 });
 </code></pre>
 
-Beware that in this implementation the <code>flashDiv</code> variable from the call to <code>React.render</code> and the earlier code with the <code>function handleFlashMessageHeader</code> are in global namespace on the JS side which may not be appropriate for some production applications.
+<p>Beware that in this implementation the <code>flashDiv</code> variable from the call to <code>React.render</code> and the earlier code with the <code>function handleFlashMessageHeader</code> are in global namespace on the JS side which may not be appropriate for some production applications.</p>
 
 <p>Finally, we change the view of the application layout (see above) to just mark where the flash messages should be placed via the <code>#flash_messages</code> place holder from
 
@@ -239,6 +238,17 @@ Beware that in this implementation the <code>flashDiv</code> variable from the c
 <pre><code>%div#flash_messages
 </code></pre>
 
+<h3>
+<a id="non-ajax-rendering" class="anchor" href="#non-ajax-rendering" aria-hidden="true"><span class="octicon octicon-link"></span></a>Non-AJAX Rendering</h3>
+<p>If, however, AJAX isn&apos;t that important, the React component can be used directly from the view:
+
+<pre><code>
+= react-component('FlashMessages', flash, 'div#flash_messages')
+</code></pre>
+
+</p>
+
+<p>Probably not a lot of value using React though if AJAX isn&apos;t involved, but it does allow more DRY code if some pages&apos; functionality depends on AJAX and other don&apos;t.</p>
 
 <h3>
 <a id="Wrapup" class="anchor" href="#wrapup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Wrapup</h3>
