@@ -39,8 +39,7 @@
 
 <p>Normally, Ruby flash messages are rendered server-side with perhaps a basic snippet of code in a layout view.  Something like this HAML could be used in basic Rails 4.0 layout (using Bootstrap):</p>
 
-<p><em>(app/views/layouts/application.html.haml)</em></p>
-
+<p><em>(app/views/layouts/application.html.haml)</em>
 <pre><code>!!!
 %html
   %head
@@ -60,10 +59,11 @@
 
       = yield
 </code></pre>
+</p>
 
 <p>The reference to <code>flash_class</code> is just a helper for applying bootstrap styles.</p>
 
-<p><em>(app/helpers/application_helper.rb)</em></p>
+<p><em>(app/helpers/application_helper.rb)</em>
 <pre><code>module ApplicationHelper
   # flash message typing for Bootstrap display
   def flash_class(level)
@@ -80,6 +80,7 @@
   end
 end
 </code></pre>
+</p>
 
 <p>And this all works as fine as it goes.  Flash messages will be displayed on every page render.</p>
 
@@ -106,7 +107,7 @@ straightforward:
 
 <p>Natively, flash messages are kept as an array of arrays.   Each child array of the main array is just two elements: the flash message type (`success`, `error`, etc.) and the supplied message text.  Since arrays don't transmit well without some notation to parse, it's just converted to JSON.</p>
 
-<p><em>(app/controllers/application_controller.rb)</em></p>
+<p><em>(app/controllers/application_controller.rb)</em>
 <pre><code>class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   after_filter :flash_to_http_header
@@ -120,13 +121,14 @@ private
   end
 end
 </code></pre>
+</p>
 
 <h3>
 <a id="receiving" class="anchor" href="#receiving" aria-hidden="true"><span class="octicon octicon-link"></span></a>Receiving</h3>
 
 <p>This part assumes that you'll put all the flash related handling into a single `.js.jsx`.  You don't have to of course, but it would keep related functionality together. If you do it the same way I did, then the below function would go in that file.</p>
 
-<p><em>(app/assets/javascripts/react/flash_messages.js.jsx)</em></p>
+<p><em>(app/assets/javascripts/react/flash_messages.js.jsx)</em>
 <pre><code>function handleFlashMessageHeader(node, xhr) {
   var _message_array = new Array();
   var _raw_messages = xhr.getResponseHeader("X-FlashMessages")
@@ -143,6 +145,7 @@ end
   node.messages(_message_array);
 }
 </code></pre>
+</p>
 
 <p>Note that the main processing here is just to convert back to an array of arrays.  That way the React component can simply direct invocations from a RoR view the same as in AJAX processing.</p>
 
@@ -162,7 +165,7 @@ Finally, the <code>render</code> function expects an array of 2-element arrays t
 If your flash messages are going to be handled exclusively client-side, then the server-side <code>application_helper.rb</code> need not handle it (and so can DRY out the code a bit).
 </p>
 
-<p><em>(app/assets/javascripts/react/flash_messages.js.jsx)</em></p>
+<p><em>(app/assets/javascripts/react/flash_messages.js.jsx)</em>
 <pre><code>/** @jsx React.DOM */
 
 var FlashMessages = React.createClass({
@@ -206,6 +209,7 @@ var FlashMessages = React.createClass({
 
 });
 </code></pre>
+</p>
 
 <h3>
 <a id="rendering" class="anchor" href="#rendering" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rendering</h3>
@@ -214,7 +218,7 @@ var FlashMessages = React.createClass({
 <p>By simply calling the receiver function whenever an AJAX call completes, the React component's state is updated triggering an immediate re-render of the incoming flash messages.  Obviously, other JQuery events could be used to trigger a flash check, but for AJAX calls, this is
 the most obvious.</p>
 
-<p><em>(app/assets/javascripts/react/flash_messages.js.jsx)</em></p>
+<p><em>(app/assets/javascripts/react/flash_messages.js.jsx)</em>
 <pre><code>$(document).ready(function() {
   var flashDiv = React.render(<FlashMessages/>, $('#flash_messages')[0]);
 
@@ -223,16 +227,19 @@ the most obvious.</p>
   });
 });
 </code></pre>
+</p>
 
 <p>Beware that in this implementation the <code>flashDiv</code> variable from the call to <code>React.render</code> and the earlier code with the <code>function handleFlashMessageHeader</code> are in global namespace on the JS side which may not be appropriate for some production applications.</p>
 
 <p>Finally, we change the view of the application layout (see above) to just mark where the flash messages should be placed via the <code>#flash_messages</code> place holder from
 
+<p><em>(partial of app/views/layouts/application.html.haml)</em>
 <pre><code>%div#flash_messages
   - flash.each do |level, message|
     %div{class: "#{flash_class(level)}"}&lt;
       = message
 </code></pre>
+</p>
 
 <p>to just</p>
 <pre><code>%div#flash_messages
@@ -244,13 +251,13 @@ the most obvious.</p>
 
 <pre><code>= react-component('FlashMessages', flash, 'div#flash_messages')
 </code></pre>
+</p>
 
-or even just
+<p>or even just</p>
 
 <pre><code>= react-component('FlashMessages', flash, :div)
 </code></pre>
 
-</p>
 
 <p>Probably not a lot of value using React though if AJAX isn&apos;t involved, but it does allow more DRY code if some pages&apos; functionality depends on AJAX and other don&apos;t.</p>
 
@@ -258,7 +265,7 @@ or even just
 <a id="Wrapup" class="anchor" href="#wrapup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Wrapup</h3>
 
 Here is the complete JSX file that handles the client-side processing with ReactJS:
-<p><em>(app/assets/javascripts/react/flash_messages.js.jsx)</em></p>
+<p><em>(app/assets/javascripts/react/flash_messages.js.jsx)</em>
 <pre><code>/** @jsx React.DOM */
 
 var FlashMessages = React.createClass({
@@ -327,7 +334,7 @@ $(document).ready(function() {
   });
 });
 </code></pre>
-
+</p>
 
       </section>
       <footer>
