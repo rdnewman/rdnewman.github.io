@@ -242,8 +242,12 @@ the most obvious.</p>
 <a id="non-ajax-rendering" class="anchor" href="#non-ajax-rendering" aria-hidden="true"><span class="octicon octicon-link"></span></a>Non-AJAX Rendering</h3>
 <p>If, however, AJAX isn&apos;t that important, the React component can be used directly from the view:
 
-<pre><code>
-= react-component('FlashMessages', flash, 'div#flash_messages')
+<pre><code>= react-component('FlashMessages', flash, 'div#flash_messages')
+</code></pre>
+
+or even just
+
+<pre><code>= react-component('FlashMessages', flash, :div)
 </code></pre>
 
 </p>
