@@ -221,6 +221,8 @@ the most obvious.</p>
 });
 </code></pre>
 
+Beware that in this implementation the <code>flashDiv</code> variable from the call to <code>React.render</code> and the earlier code with the <code>function handleFlashMessageHeader</code> are in global namespace on the JS side which may not be appropriate for some production applications.
+
 <p>Finally, we change the view of the application layout (see above) to just mark where the flash messages should be placed via the <code>#flash_messages</code> place holder from
 
 <pre><code>%div#flash_messages
@@ -233,6 +235,80 @@ the most obvious.</p>
 <pre><code>%div#flash_messages
 </code></pre>
 
+
+<h3>
+<a id="Wrapup" class="anchor" href="#wrapup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Wrapup</h3>
+
+Here is the complete JSX file that handles the client-side processing with ReactJS:
+<p><em>(app/assets/javascripts/react/flash_messages.js.jsx)</em></p>
+<pre><code>/** @jsx React.DOM */
+
+var FlashMessages = React.createClass({
+  getInitialState: function() {
+    return {messages: this.props.messages};
+  },
+
+  messages: function (messageArray) {
+    this.setState({messages: messageArray});
+  },
+
+  render: function() {
+    return (
+      <div className='flash_messages_component'>
+        {this.state.messages.map(function(message, index) {
+          _level = message[0];
+          _text  = message[1];
+          return (
+            <div key={index} className={this._flash_class(_level)}>
+              {_text}
+            </div>
+          );
+        }.bind(this))}
+      </div>
+    )
+  },
+
+  _flash_class: function(level) {
+    var _result = 'alert alert-error';
+    if (level === 'notice') {
+      _result = 'alert alert-info';
+    } else if (level === 'success') {
+      _result = 'alert alert-success';
+    } else if (level === 'error') {
+      _result = 'alert alert-error';
+    } else if (level === 'alert') {
+      _result = 'alert alert-error';
+    }
+    return _result;
+  }
+
+});
+
+function handleFlashMessageHeader(node, xhr) {
+  var _message_array = new Array();
+  var _raw_messages = xhr.getResponseHeader("X-FlashMessages")
+  if (_raw_messages) {
+    var _json_messages = JSON.parse(_raw_messages);
+    count = 0
+    for (var key in _json_messages) {
+      _message_array[count] = new Array();
+      _message_array[count][0] = key;
+      _message_array[count][1] = _json_messages[key];
+      count += 1;
+    }
+  }
+  node.messages(_message_array);
+}
+
+$(document).ready(function() {
+  var dummy = new Array();
+  var flashDiv = React.render(<FlashMessages messages={dummy} />, $('#flash_messages')[0]);
+
+  $(document).ajaxComplete(function(event, xhr, settings) {
+    handleFlashMessageHeader(flashDiv, xhr);
+  });
+});
+</code></pre>
 
 
       </section>
