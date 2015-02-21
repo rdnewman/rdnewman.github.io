@@ -1,17 +1,20 @@
 # Site settings
-#name: Test Name
 title: Unexpected error at line 0.
 description: Unexpected error at line 0.
 intro: > # this means to ignore newlines until next setting.
   Yeah, I tried that.&nbsp;&nbsp;&nbsp;
-  Wait.&nbsp;&nbsp;I forget.&nbsp;&nbsp;&nbsp;
+  Wait &mdash; I forget.&nbsp;&nbsp;&nbsp;
   Maybe I should write it down.&nbsp;&nbsp;&nbsp;
 logo:     logo.png
 paginate: 8
-
-url: "" # "http://rdnewman.github.io" # the base hostname & protocol for your site
-baseurl: "" # the subpath of your site, e.g. /blog/
 #timezone: America/Boise
+disqus_shortname: rdnewmangithubio
+
+# URL: comment out one or the other
+#url: "http://rdnewman.github.io"  # PRODUCTION: the base hostname & protocol for your site
+url: "http://127.0.0.1:4000"      # LOCAL:      the base hostname & protocol for your site
+
+baseurl: "" # the subpath of your site, e.g. /blog/
 
 # Owner/author information
 owner:
@@ -25,15 +28,9 @@ owner:
   # For Google Authorship https://plus.google.com/authorship
   google_plus:    rdnewman
 
-#email: richard AT newmanworks DOT com
-#twitter_username: rdnewman
-#github_username:  rdnewman
-
 # Build settings
-markdown: kramdown
+markdown: redcarpet
 highlighter: pygments
-kramdown:
-  input: GFM
 
 sass:
   sass_dir: _sass
