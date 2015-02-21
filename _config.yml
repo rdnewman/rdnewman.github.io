@@ -32,12 +32,12 @@ twitter_username: rdnewman
 github_username:  rdnewman
 
 # Build settings
-highlighter: pygments
+#highlighter: pygments
 
 #markdown: kramdown
 #markdown: redcarpet
-kramdown:
-  input: GFM
+#kramdown:
+#  input: GFM
 
 #sass:
 #  sass_dir: _scss
