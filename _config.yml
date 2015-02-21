@@ -1,16 +1,43 @@
 # Site settings
+name: Test Name
 title: Unexpected error at line 0.
-email: richard AT newmanworks DOT com
-description: > # this means to ignore newlines until "baseurl:"
-  Yeah, I tried that.  Or maybe not.
+description: Unexpected error at line 0.
+intro: > # this means to ignore newlines until next setting.
+  Yeah, I tried that. Wait, I forget.
+  Maybe I should write it down.  ¯\_(ツ)_/¯
+logo:     logo.png
+paginate: 8
 
-  To tell you the truth, I forget.
-  
-  Maybe that's why I write it down.
+url: "" # "http://rdnewman.github.io" # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://rdnewman.github.io" # the base hostname & protocol for your site
+#timezone: America/Boise
+
+# Owner/author information
+owner:
+  name:           Richard Newman
+  # avatar:         <avatar-image-link>
+  email:          richard@newmanworks.com
+  # Social networking links used in footer. Update and remove as you like.
+  twitter:        rdnewman
+  github:         rdnewman
+  stackexchange:  rdnewman
+  # For Google Authorship https://plus.google.com/authorship
+  google_plus:    rdnewman
+
+
+
+email: richard AT newmanworks DOT com
 twitter_username: rdnewman
 github_username:  rdnewman
 
 # Build settings
-markdown: kramdown
+highlighter: pygments
+
+#markdown: kramdown
+#markdown: redcarpet
+kramdown:
+  input: GFM
+
+#sass:
+#  sass_dir: _scss
+#  style: :compressed
