@@ -4,8 +4,6 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+My name is Richard Newman ( [ ](https://www.linkedin.com/in/richardnewman24/){:class="about-icon fa fa-linkedin-square"}&nbsp;&nbsp;[ ](https://github.com/rdnewman){:class="about-icon fa fa-github"}&nbsp;&nbsp;[ ](https://bitbucket.org/rdnewman){:class="about-icon fa fa-bitbucket"}&nbsp;&nbsp;[ ](http://stackoverflow.com/users/3137549){:class="about-icon fa fa-stack-overflow"}&nbsp;&nbsp;[ ](https://twitter.com/rdnewman){:class="about-icon fa fa-twitter"}&nbsp;&nbsp;[ ](http://rdnewman.deviantart.com/){:class="about-icon fa fa-deviantart"} ) and this is my place to keep personal programming notes.
 
-You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
-
-You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+The theme for this Jekyll blog is adapted from Vinit Kumar's white paper ( [ ](http://vinitkumar.me/white-paper/){:class="about-icon fa fa-html5"}&nbsp;&nbsp;[ ](https://github.com/vinitkumar/white-paper){:class="about-icon fa fa-github"} ).  As of 2/2015, MIT license.
