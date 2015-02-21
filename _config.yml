@@ -1,10 +1,7 @@
 # Site settings
 title: Unexpected error at line 0.
 description: Unexpected error at line 0.
-intro: > # this means to ignore newlines until next setting.
-  Yeah, I tried that.&nbsp;&nbsp;&nbsp;
-  Wait &mdash; I forget.&nbsp;&nbsp;&nbsp;
-  Maybe I should write it down.&nbsp;&nbsp;&nbsp;
+intro:
 logo:     logo.png
 paginate: 8
 #timezone: America/Boise
