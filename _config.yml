@@ -8,7 +8,7 @@ paginate: 8
 disqus_shortname: rdnewmangithubio
 
 # URL: comment out one or the other
-url: "http://rdnewman.github.io"  # PRODUCTION: the base hostname & protocol for your site
+url: "rdnewman.github.io"  # PRODUCTION: the base hostname & protocol for your site
 #url: "http://127.0.0.1:4000"      # LOCAL:      the base hostname & protocol for your site
 
 baseurl: "" # the subpath of your site, e.g. /blog/
