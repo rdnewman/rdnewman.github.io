@@ -1,5 +1,5 @@
 # Site settings
-name: Test Name
+#name: Test Name
 title: Unexpected error at line 0.
 description: Unexpected error at line 0.
 intro: > # this means to ignore newlines until next setting.
@@ -17,7 +17,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 owner:
   name:           Richard Newman
   # avatar:         <avatar-image-link>
-  email:          richard@newmanworks.com
+  #email:          richard@newmanworks.com
   # Social networking links used in footer. Update and remove as you like.
   twitter:        rdnewman
   github:         rdnewman
@@ -25,20 +25,16 @@ owner:
   # For Google Authorship https://plus.google.com/authorship
   google_plus:    rdnewman
 
-
-
-email: richard AT newmanworks DOT com
-twitter_username: rdnewman
-github_username:  rdnewman
+#email: richard AT newmanworks DOT com
+#twitter_username: rdnewman
+#github_username:  rdnewman
 
 # Build settings
-#highlighter: pygments
+markdown: kramdown
+highlighter: pygments
+kramdown:
+  input: GFM
 
-#markdown: kramdown
-#markdown: redcarpet
-#kramdown:
-#  input: GFM
-
-#sass:
-#  sass_dir: _scss
-#  style: :compressed
+sass:
+  sass_dir: _sass
+  style: :compressed
