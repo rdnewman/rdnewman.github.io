@@ -19,3 +19,7 @@ The theme for this Jekyll blog is adapted from Vinit Kumar's white paper theme (
 <a href='http://vinitkumar.me/white-paper/',         class='about-icon fa fa-html5'></a>&nbsp;&nbsp;
 <a href='https://github.com/vinitkumar/white-paper', class='about-icon fa fa-github'></a>
 ).&nbsp;&nbsp;Thank you, Mr. Kumar.
+
+----
+
+Note: *there seems to be something a bit off with the redcarpet/pygments syntax highlighting -- closing `</div>` tags are highlighted oddly.*

@@ -26,6 +26,8 @@ owner:
   google_plus:    rdnewman
 
 # Build settings
+excerpt_separator: <!--more-->
+
 markdown: redcarpet
 highlighter: pygments
 
