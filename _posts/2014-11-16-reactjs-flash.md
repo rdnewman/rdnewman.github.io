@@ -332,4 +332,4 @@ $(document).ready(function() {
 
 *A version of this post also appears on
 [StackOverflow](http://stackoverflow.com/questions/26964974/handle-rails-flash-messages-after-ajax-calls-using-reactjs)
-(<a href='http://stackoverflow.com/questions/26964974/handle-rails-flash-messages-after-ajax-calls-using-reactjs', class='about-icon fa fa-stack-overflow'></a>).*
+<a href='http://stackoverflow.com/questions/26964974/handle-rails-flash-messages-after-ajax-calls-using-reactjs', class='about-icon fa fa-stack-overflow'></a>.*
