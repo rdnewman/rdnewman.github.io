@@ -8,12 +8,8 @@
   font-style: normal;
 }
 
-/*
-
-.octicon is optimized for 16px.
-.mega-octicon is optimized for 32px but can be used larger.
-
-*/
+// .octicon is optimized for 16px.
+// .mega-octicon is optimized for 32px but can be used larger.
 .octicon {
   font: normal normal 16px octicons;
   line-height: 1;
@@ -31,6 +27,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+// glyphs
 .octicon-alert:before { content: '\f02d'} /*  */
 .octicon-alignment-align:before { content: '\f08a'} /*  */
 .octicon-alignment-aligned-to:before { content: '\f08e'} /*  */

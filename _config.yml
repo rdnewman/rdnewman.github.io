@@ -3,8 +3,9 @@ name: Test Name
 title: Unexpected error at line 0.
 description: Unexpected error at line 0.
 intro: > # this means to ignore newlines until next setting.
-  Yeah, I tried that. Wait, I forget.
-  Maybe I should write it down.  ¯\_(ツ)_/¯
+  Yeah, I tried that.&nbsp;&nbsp;&nbsp;
+  Wait.&nbsp;&nbsp;I forget.&nbsp;&nbsp;&nbsp;
+  Maybe I should write it down.&nbsp;&nbsp;&nbsp;
 logo:     logo.png
 paginate: 8
 
