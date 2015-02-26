@@ -394,10 +394,10 @@ the asset portions needed without having to disrupt the directory structure in p
 
 ### Basic Rails app with React
 The next post on this subject will get specific with regard to Rubix, but for now, we can at least prepare a basic Rails and React app as a baseline.
- - make a basic Rails 4.2 app and verify it displays text from a view
- - install `react-rails` and verify it adds a 'Hello World' message to the page
 
-In the next post, we'll add the `bootstrap-sass` gem and then the Rubix theme into the app's vendor assets and demonstrate we can use its components
+* make a basic Rails 4.2 app and verify it displays text from a view,
+* install `react-rails` and verify it adds a 'Hello World' message to the page,
+* in the next post, we'll add the `bootstrap-sass` gem and then the Rubix theme into the app's vendor assets and demonstrate we can use its components.
 
 First, just make a new app:
 
