@@ -494,6 +494,23 @@ span.codefilename {
   background: #F4FAFF;
 }
 
+div.togglevisibility, 
+span.togglevisibility {
+  color: #87f;
+  font-family: 'Lucida Console', Monaco, monospace;
+  font-size: .8em;
+  font-style: italic;
+  padding: 0;
+  margin: 0;
+}
+
+pre.dirtree {
+  font-size: .7em;
+  padding: .5em 0 .5em .5em;
+  margin: 0;
+  background: #eee;
+}
+
 //*************
 // Icons
 //*************

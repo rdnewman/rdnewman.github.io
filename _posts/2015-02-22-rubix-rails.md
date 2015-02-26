@@ -1,29 +1,33 @@
 ---
 layout: post
-title: "Integrating 'Rubix' Bootstrap theme into Rails 4.0"
-date: 2014-11-16 20:00:00
+title: "Integrating 'Rubix' Bootstrap theme into Rails 4.0 [Part 1]"
+date: 2015-02-24
 comments: true
 tags: reactjs bootstrap rubix
 categories: coding
-published: false
 ---
 
 [Sketchpixy's](https://github.com/sketchpixy) ReactJS-based [Rubix](https://wrapbootstrap.com/theme/rubix-reactjs-powered-admin-template-WB09498FH)
-can be a great fit for a React/RoR (*RRoR*, anyone?) project given its robust set of UI tools.  
+can be a great fit for a React/RoR (*RRoR*, anyone?) project given its robust set of UI tools.  However, it's meant as a standalone React theme and
+doesn't natively take advantage of Rail's asset pipeline or take advantage of the [react-rails](https://github.com/reactjs/react-rails) gem.
 
-However, it's meant as a standalone React theme and doesn't natively take advantage of Rail's asset pipeline or integrate with 
-the [react-rails](https://github.com/reactjs/react-rails) gem.   This post describes an integration implementation.
+This post is the first of a series that describes an integration implementation.  We'll start by looking at the Rubix theme and decide a
+strategy for implementation.
+
+<img src='/images/WB09498FH.png'/>
 
 <!--more-->
 
-=== Ingredients
-Rubix is available by purchase ($20 as of this writing) and is delivered as a `products-WB09498FH.zip`.  We're going to start with a completely new Rails 4.0 app and load the `react-rails` gem and show a basic `hello world` with vanilla React.  Because I like Sass and Slim, those will be installed as well.  Then we'll add the Rubix theme into the app's vendor assets and demonstrate that we can use the React components it provides.
+### Looking at Rubix
+Rubix is available by purchase ($20 as of this writing) and is delivered as a `products-WB09498FH.zip` file.  The zip file contents
+(as of Rubix version 2.1) are extensive with over 4,000 files and 355 directories.  Since this theme requires purchase and licensing from Sketchpixy,
+I don't want to show any of its details, but the directory tree is outlined below.
 
-The zip file contents (as of Rubix version 2.1) are extensive with over 4000 files and 355 directories.  Here's the tree (click to expand):
-
-products-WB09498FH
-```
-products-WB09498FH
+<span onclick='toggle_visibility("dirtree")' class='togglevisibility'>
+  Click here to toggle tree display (without individual files)
+</span>
+<pre id='dirtree' class='dirtree' style='display: none;'>
+products-WB09498FH (individual files not shown)
 ├── prebuild
 │   └── scaffold
 │       ├── jsx
@@ -381,7 +385,112 @@ products-WB09498FH
                 └── sections
 
 355 directories
+</pre>
+
+Some of this content is to support building the theme for use outside of rails, but we don't needs those parts.  The author provides updates for his theme
+and so it's easiest if we just park the whole thing under `/vendor/assets` even if it increases the storage footprint.  Our strategy will be to target
+the asset portions needed without having to disrupt the directory structure in place.
+
+### Basic Rails app with React
+The next post on this subject will get specific with regard to Rubix, but for now, we can at least prepare a basic Rails and React app as a baseline.
+ - make a basic Rails 4.2 app and verify it displays text from a view
+ - install `react-rails` and verify it adds a 'Hello World' message to the page
+
+In the next post, we'll add the `bootstrap-sass` gem and then the Rubix theme into the app's vendor assets and demonstrate we can use its components
+
+First, just make a new app:
+
+```bash
+$ rails new rubix-rails
+$ cd rubix-rails
 ```
 
+I like [slim](http://slim-lang.com/), so I'm tossing in the [gem](https://github.com/slim-template/slim-rails) for that.  (If you don't want Slim,
+you can skip this and the next step or substitute with Haml instead.)  Most of the UI will be React based, so this decision should be pretty minor
+in most applications.
 
+Add the following to the `Gemfile` and then `bundle install`:
 
+```rb
+gem 'slim-rails'
+```
+
+Here's the initial `app/views/layouts/application.html.slim` that restates the default `app/views/layouts/application.html.erb` (delete the `.erb` version):
+
+```slim
+doctype html
+html
+  head
+    title Rubix on Rails
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  body
+    = yield
+```
+
+To get our test view going, we'll just do a basic Welcome index page.  
+
+```bash
+$ mkdir -p app/views/welcome
+$ echo 'h3 Welcome to my new page!' > app/views/welcome/index.html.slim
+```
+
+Add an empty `WelcomeController` under `app/controllers` to simply read as follows:
+
+```ruby
+class WelcomeController < ApplicationController
+end
+```
+
+Add the view to `config/routes.rb` by just uncommenting out the line `root 'welcome#index'` that rails already put in there.
+
+Verify that everything is working so far: running rails (`rails s`) should give you a nice bold "Welcome to my new page".  If so, we're ready to install
+`react-rails`; otherwise fix the basic rails app (useful references abound).  
+
+These next steps are taken from the [`react-rails` gem site](https://github.com/reactjs/react-rails), so refer there if questions.
+
+Update the `Gemfile` and...
+
+```rb
+gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
+```
+
+...install it:
+
+```bash
+$ rails g react:install
+```
+
+Under the new `app/assets/javascripts/components` subdirectory just created, create a new `hello_world.js.jsx` file with these contents:
+
+```js
+/** @jsx React.DOM */
+
+var HelloWorld = React.createClass({
+  render: function() {
+    return (
+      <div>
+        Hello World!
+      </div>
+    );
+  }
+});
+```
+
+And, finally, test again.  "Hello World!" should now also appear on the page.
+
+We're ready to go on to getting Rubix integrated!
+
+<script type="text/javascript">
+<!--
+  function toggle_visibility(id) {
+    var e = document.getElementById(id);
+    if(e.style.display == 'block')
+      e.style.display = 'none';
+    else
+      e.style.display = 'block';
+  }
+//-->
+</script>
