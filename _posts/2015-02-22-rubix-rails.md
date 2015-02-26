@@ -9,10 +9,11 @@ categories: coding
 
 [Sketchpixy's](https://github.com/sketchpixy) ReactJS-based [Rubix](https://wrapbootstrap.com/theme/rubix-reactjs-powered-admin-template-WB09498FH)
 can be a great fit for a React/RoR (*RRoR*, anyone?) project given its robust set of UI tools.  However, it's meant as a standalone React theme and
-doesn't natively take advantage of Rail's asset pipeline or take advantage of the [react-rails](https://github.com/reactjs/react-rails) gem.
+doesn't natively take advantage of Rail's asset pipeline or take advantage of the [react-rails](https://github.com/reactjs/react-rails) gem.  Sketchpixy has
+stated that a gem for directly supporting Rubix is forthcoming, but no timeline has been published.
 
-This post is the first of a series that describes an integration implementation.  We'll start by looking at the Rubix theme and decide a
-strategy for implementation.
+So in the meantime, this post is the first of a series that describes an integration implementation until the new gem is released.  We'll start by
+looking at the Rubix theme and decide a strategy for implementation.
 
 <img src='/images/WB09498FH.png'/>
 
