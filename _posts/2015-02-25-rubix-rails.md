@@ -1,12 +1,11 @@
 ---
 layout: post
 title: "Integrating 'Rubix' Bootstrap theme into Rails 4.0 [Part 1]"
-date: 2015-02-24
+date: 2015-02-25
 comments: true
 tags: reactjs bootstrap rubix
 categories: coding
 ---
-
 [Sketchpixy's](https://github.com/sketchpixy) ReactJS-based [Rubix](https://wrapbootstrap.com/theme/rubix-reactjs-powered-admin-template-WB09498FH)
 can be a great fit for a React/RoR (*RRoR*, anyone?) project given its robust set of UI tools.  However, it's meant as a standalone React theme and
 doesn't natively take advantage of Rail's asset pipeline or take advantage of the [react-rails](https://github.com/reactjs/react-rails) gem.  Sketchpixy has
@@ -395,9 +394,7 @@ the asset portions needed without having to disrupt the directory structure in p
 ### Basic Rails app with React
 The next post on this subject will get specific with regard to Rubix, but for now, we can at least prepare a basic Rails and React app as a baseline.
 
-* make a basic Rails 4.2 app and verify it displays text from a view,
-* install `react-rails` and verify it adds a 'Hello World' message to the page,
-* in the next post, we'll add the `bootstrap-sass` gem and then the Rubix theme into the app's vendor assets and demonstrate we can use its components.
+#### <u>Make basic Rails 4.2 app with Bootstrap and verify it displays text from a view</u>
 
 First, just make a new app:
 
@@ -406,17 +403,34 @@ $ rails new rubix-rails
 $ cd rubix-rails
 ```
 
-I like [slim](http://slim-lang.com/), so I'm tossing in the [gem](https://github.com/slim-template/slim-rails) for that.  (If you don't want Slim,
-you can skip this and the next step or substitute with Haml instead.)  Most of the UI will be React based, so this decision should be pretty minor
-in most applications.
-
 Add the following to the `Gemfile` and then `bundle install`:
 
 ```rb
+gem 'bootstrap-sass'
 gem 'slim-rails'
 ```
 
-Here's the initial `app/views/layouts/application.html.slim` that restates the default `app/views/layouts/application.html.erb` (delete the `.erb` version):
+Only `bootstrap-rails` is necessary to make this work.  I like [slim](http://slim-lang.com/), so I'm tossing in
+the [gem](https://github.com/slim-template/slim-rails) for that.  If you don't want Slim,
+you can skip this gem and the next step (or substitute with Haml instead).  Most of the UI will be React based, so it won't much matter whether you
+use erb, haml, or slim.
+
+To integrate Bootstrap, first move the `application.css` to be a `.scss` file:
+
+```bash
+$ mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss
+```
+
+And then append the following lines into that file:
+
+```sass
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import 'bootstrap/theme';
+```
+
+If you do use slim, here's the initial `app/views/layouts/application.html.slim` that restates the default `app/views/layouts/application.html.erb`
+(be sure to delete the `.erb` version):
 
 ```slim
 doctype html
@@ -435,7 +449,14 @@ To get our test view going, we'll just do a basic Welcome index page.
 
 ```bash
 $ mkdir -p app/views/welcome
-$ echo 'h3 Welcome to my new page!' > app/views/welcome/index.html.slim
+```
+
+Add this as the content of `app/views/welcome/index.html.slim`
+
+```slim
+h3 Welcome!
+
+p This line was produced from the Rails view.
 ```
 
 Add an empty `WelcomeController` under `app/controllers` to simply read as follows:
@@ -447,8 +468,10 @@ end
 
 Add the view to `config/routes.rb` by just uncommenting out the line `root 'welcome#index'` that rails already put in there.
 
-Verify that everything is working so far: running rails (`rails s`) should give you a nice bold "Welcome to my new page".  If so, we're ready to install
-`react-rails`; otherwise fix the basic rails app (useful references abound).  
+Verify that everything is working so far: running rails (`rails s`) should give you a nice bold "Welcome to my new page" using a Bootstrap font.  
+If so, we're ready to install `react-rails`; otherwise fix the basic rails app (useful references abound).  
+
+#### <u>Install react-rails and verify it adds new text to the page</u>
 
 These next steps are taken from the [`react-rails` gem site](https://github.com/reactjs/react-rails), so refer there if questions.
 
@@ -464,25 +487,29 @@ gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
 $ rails g react:install
 ```
 
-Under the new `app/assets/javascripts/components` subdirectory just created, create a new `hello_world.js.jsx` file with these contents:
+Under the new `app/assets/javascripts/components` subdirectory just created, create a new `demo_line.js.jsx` file with these contents:
 
 ```js
 /** @jsx React.DOM */
 
-var HelloWorld = React.createClass({
+var DemoLine = React.createClass({
   render: function() {
     return (
-      <div>
-        Hello World!
-      </div>
+      <span className='label label-success'>This line was produced in ReactJS.</span>
     );
   }
 });
 ```
 
-And, finally, test again.  "Hello World!" should now also appear on the page.
+Go back under the `app/views/welcome/index.html.slim` view and add this line below :
 
-We're ready to go on to getting Rubix integrated!
+```slim
+= react_component 'DemoLine', {}, :div
+```
+
+And, finally, test again.  The "This line was produced in ReactJS." text should appear in a green background.
+
+If so, we've demonstrated React and Bootstrap are installed and integrated.  We're ready to go on to getting Rubix integrated!
 
 <script type="text/javascript">
 <!--
