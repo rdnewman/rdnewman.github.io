@@ -27,364 +27,369 @@ I don't want to show any of its details, but the directory tree is outlined belo
   Click here to toggle tree display (without individual files)
 </span>
 <pre id='dirtree' class='dirtree' style='display: none;'>
-products-WB09498FH (individual files not shown)
-├── prebuild
-│   └── scaffold
-│       ├── jsx
-│       │   ├── common
-│       │   ├── react-styles
-│       │   │   └── src
-│       │   └── routes
-│       │       └── app
-│       └── sass
-│           ├── fonts
-│           ├── pages
-│           ├── print
-│           └── theme
-│               ├── components
-│               └── sections
-├── public
-│   ├── css
-│   │   ├── app
-│   │   │   ├── blessed
-│   │   │   │   ├── ltr
-│   │   │   │   └── rtl
-│   │   │   ├── min
-│   │   │   │   ├── ltr
-│   │   │   │   └── rtl
-│   │   │   └── raw
-│   │   │       ├── ltr
-│   │   │       └── rtl
-│   │   ├── demo
-│   │   │   ├── blessed
-│   │   │   │   ├── ltr
-│   │   │   │   └── rtl
-│   │   │   ├── min
-│   │   │   │   ├── ltr
-│   │   │   │   └── rtl
-│   │   │   └── raw
-│   │   │       ├── ltr
-│   │   │       └── rtl
-│   │   ├── fonts
-│   │   │   ├── app
-│   │   │   └── demo
-│   │   └── vendor
-│   │       ├── morris
-│   │       ├── pace
-│   │       └── perfect-scrollbar
-│   ├── favicons
-│   ├── fonts
-│   │   ├── dropbox
-│   │   │   ├── app
-│   │   │   └── demo
-│   │   ├── glyphicon
-│   │   └── Lato-others
-│   ├── imgs
-│   │   ├── avatars
-│   │   ├── blueimp-gallery
-│   │   ├── datatables
-│   │   ├── dropzone
-│   │   ├── flags
-│   │   │   ├── flags
-│   │   │   │   └── flat
-│   │   │   │       ├── 16
-│   │   │   │       ├── 24
-│   │   │   │       ├── 32
-│   │   │   │       ├── 48
-│   │   │   │       ├── 64
-│   │   │   │       ├── icns
-│   │   │   │       └── ico
-│   │   │   └── flags-iso
-│   │   │       └── flat
-│   │   │           ├── 16
-│   │   │           ├── 24
-│   │   │           ├── 32
-│   │   │           ├── 48
-│   │   │           └── 64
-│   │   ├── gallery
-│   │   ├── homepage
-│   │   ├── jcrop
-│   │   ├── leaflet
-│   │   ├── select2
-│   │   ├── shots
-│   │   ├── timeline
-│   │   │   └── user-interface
-│   │   ├── trumbowyg
-│   │   ├── unsplash
-│   │   ├── wefunction
-│   │   └── xeditable
-│   ├── js
-│   │   ├── app
-│   │   ├── common
-│   │   │   ├── react
-│   │   │   ├── react-bootstrap
-│   │   │   ├── react-l20n
-│   │   │   ├── react-responsive
-│   │   │   ├── react-router
-│   │   │   ├── rrouter
-│   │   │   └── rubix
-│   │   ├── demo
-│   │   ├── minified
-│   │   ├── polyfills
-│   │   └── vendor
-│   │       ├── blueimp-gallery
-│   │       ├── bootstrap
-│   │       ├── bootstrap-datetimepicker
-│   │       ├── bootstrap-slider
-│   │       ├── c3js
-│   │       ├── chartjs
-│   │       ├── codemirror
-│   │       │   ├── addon
-│   │       │   │   ├── comment
-│   │       │   │   ├── dialog
-│   │       │   │   ├── display
-│   │       │   │   ├── edit
-│   │       │   │   ├── fold
-│   │       │   │   ├── hint
-│   │       │   │   ├── lint
-│   │       │   │   ├── merge
-│   │       │   │   ├── mode
-│   │       │   │   ├── runmode
-│   │       │   │   ├── scroll
-│   │       │   │   ├── search
-│   │       │   │   ├── selection
-│   │       │   │   ├── tern
-│   │       │   │   └── wrap
-│   │       │   ├── bin
-│   │       │   ├── demo
-│   │       │   ├── doc
-│   │       │   ├── keymap
-│   │       │   ├── lib
-│   │       │   ├── mode
-│   │       │   │   ├── apl
-│   │       │   │   ├── asterisk
-│   │       │   │   ├── clike
-│   │       │   │   ├── clojure
-│   │       │   │   ├── cobol
-│   │       │   │   ├── coffeescript
-│   │       │   │   ├── commonlisp
-│   │       │   │   ├── css
-│   │       │   │   ├── cypher
-│   │       │   │   ├── d
-│   │       │   │   ├── diff
-│   │       │   │   ├── django
-│   │       │   │   ├── dtd
-│   │       │   │   ├── dylan
-│   │       │   │   ├── ecl
-│   │       │   │   ├── eiffel
-│   │       │   │   ├── erlang
-│   │       │   │   ├── fortran
-│   │       │   │   ├── gas
-│   │       │   │   ├── gfm
-│   │       │   │   ├── gherkin
-│   │       │   │   ├── go
-│   │       │   │   ├── groovy
-│   │       │   │   ├── haml
-│   │       │   │   ├── haskell
-│   │       │   │   ├── haxe
-│   │       │   │   ├── htmlembedded
-│   │       │   │   ├── htmlmixed
-│   │       │   │   ├── http
-│   │       │   │   ├── jade
-│   │       │   │   ├── javascript
-│   │       │   │   ├── jinja2
-│   │       │   │   ├── julia
-│   │       │   │   ├── kotlin
-│   │       │   │   ├── livescript
-│   │       │   │   ├── lua
-│   │       │   │   ├── markdown
-│   │       │   │   ├── mirc
-│   │       │   │   ├── mllike
-│   │       │   │   ├── nginx
-│   │       │   │   ├── ntriples
-│   │       │   │   ├── octave
-│   │       │   │   ├── pascal
-│   │       │   │   ├── pegjs
-│   │       │   │   ├── perl
-│   │       │   │   ├── php
-│   │       │   │   ├── pig
-│   │       │   │   ├── properties
-│   │       │   │   ├── puppet
-│   │       │   │   ├── python
-│   │       │   │   ├── q
-│   │       │   │   ├── r
-│   │       │   │   ├── rpm
-│   │       │   │   │   └── changes
-│   │       │   │   ├── rst
-│   │       │   │   ├── ruby
-│   │       │   │   ├── rust
-│   │       │   │   ├── sass
-│   │       │   │   ├── scheme
-│   │       │   │   ├── shell
-│   │       │   │   ├── sieve
-│   │       │   │   ├── slim
-│   │       │   │   ├── smalltalk
-│   │       │   │   ├── smarty
-│   │       │   │   ├── smartymixed
-│   │       │   │   ├── solr
-│   │       │   │   ├── sparql
-│   │       │   │   ├── sql
-│   │       │   │   ├── stex
-│   │       │   │   ├── tcl
-│   │       │   │   ├── tiddlywiki
-│   │       │   │   ├── tiki
-│   │       │   │   ├── toml
-│   │       │   │   ├── turtle
-│   │       │   │   ├── vb
-│   │       │   │   ├── vbscript
-│   │       │   │   ├── velocity
-│   │       │   │   ├── verilog
-│   │       │   │   ├── xml
-│   │       │   │   ├── xquery
-│   │       │   │   ├── yaml
-│   │       │   │   └── z80
-│   │       │   ├── test
-│   │       │   │   └── lint
-│   │       │   └── theme
-│   │       ├── d3
-│   │       ├── datatables
-│   │       ├── dropzone
-│   │       ├── eventemitter2
-│   │       ├── fullcalendar
-│   │       │   ├── demos
-│   │       │   │   ├── json
-│   │       │   │   └── php
-│   │       │   ├── lang
-│   │       │   └── lib
-│   │       │       └── cupertino
-│   │       │           └── images
-│   │       ├── gmaps
-│   │       ├── holder
-│   │       ├── ion.rangeSlider
-│   │       ├── ion.tabs
-│   │       ├── jcrop
-│   │       ├── jquery
-│   │       ├── jquery-bootgrid
-│   │       ├── jquery.knob
-│   │       ├── jquery-steps
-│   │       ├── jquery-ui
-│   │       │   └── external
-│   │       │       └── jquery
-│   │       ├── jquery-validate
-│   │       ├── l20n
-│   │       ├── leaflet
-│   │       ├── messenger
-│   │       ├── moment
-│   │       ├── morris
-│   │       ├── nestable
-│   │       ├── pace
-│   │       ├── prism
-│   │       ├── p-scrollbar
-│   │       │   ├── examples
-│   │       │   ├── min
-│   │       │   └── src
-│   │       ├── raphael
-│   │       ├── select2
-│   │       ├── sparklines
-│   │       ├── switchery
-│   │       ├── tablesaw
-│   │       ├── timeline
-│   │       ├── trumbowyg
-│   │       │   ├── langs
-│   │       │   └── plugins
-│   │       │       ├── base64
-│   │       │       └── upload
-│   │       ├── typeahead
-│   │       ├── vex
-│   │       └── xeditable
-│   ├── locales
-│   │   ├── app
-│   │   │   └── en-US
-│   │   └── demo
-│   │       ├── ar
-│   │       ├── ch
-│   │       ├── en-US
-│   │       ├── fr
-│   │       ├── ge
-│   │       └── it
-│   └── video
-│       └── homepage
-└── src
-    ├── global
-    │   ├── requires
-    │   ├── sass
-    │   │   ├── rubix
-    │   │   │   ├── base
-    │   │   │   ├── layout
-    │   │   │   ├── module
-    │   │   │   └── overrides
+rubix-v2.2 (individual files not shown)
+├── documentation
+│   ├── Bootstrap
+│   ├── Gulpfiles
+│   └── Rubix
+└── rubix
+    ├── prebuild
+    │   └── scaffold
+    │       ├── jsx
+    │       │   ├── common
+    │       │   ├── react-styles
+    │       │   │   └── src
+    │       │   └── routes
+    │       │       └── app
+    │       └── sass
+    │           ├── fonts
+    │           ├── pages
+    │           ├── print
+    │           └── theme
+    │               ├── components
+    │               └── sections
+    ├── public
+    │   ├── css
+    │   │   ├── app
+    │   │   │   ├── blessed
+    │   │   │   │   ├── ltr
+    │   │   │   │   └── rtl
+    │   │   │   ├── min
+    │   │   │   │   ├── ltr
+    │   │   │   │   └── rtl
+    │   │   │   └── raw
+    │   │   │       ├── ltr
+    │   │   │       └── rtl
+    │   │   ├── demo
+    │   │   │   ├── blessed
+    │   │   │   │   ├── ltr
+    │   │   │   │   └── rtl
+    │   │   │   ├── min
+    │   │   │   │   ├── ltr
+    │   │   │   │   └── rtl
+    │   │   │   └── raw
+    │   │   │       ├── ltr
+    │   │   │       └── rtl
+    │   │   ├── fonts
+    │   │   │   ├── app
+    │   │   │   └── demo
+    │   │   └── vendor
+    │   │       ├── morris
+    │   │       ├── pace
+    │   │       └── perfect-scrollbar
+    │   ├── favicons
+    │   ├── fonts
+    │   │   ├── dropbox
+    │   │   │   ├── app
+    │   │   │   └── demo
+    │   │   ├── glyphicon
+    │   │   └── Lato-others
+    │   ├── imgs
+    │   │   ├── avatars
+    │   │   ├── blueimp-gallery
+    │   │   ├── datatables
+    │   │   ├── dropzone
+    │   │   ├── flags
+    │   │   │   ├── flags
+    │   │   │   │   └── flat
+    │   │   │   │       ├── 16
+    │   │   │   │       ├── 24
+    │   │   │   │       ├── 32
+    │   │   │   │       ├── 48
+    │   │   │   │       ├── 64
+    │   │   │   │       ├── icns
+    │   │   │   │       └── ico
+    │   │   │   └── flags-iso
+    │   │   │       └── flat
+    │   │   │           ├── 16
+    │   │   │           ├── 24
+    │   │   │           ├── 32
+    │   │   │           ├── 48
+    │   │   │           └── 64
+    │   │   ├── gallery
+    │   │   ├── homepage
+    │   │   ├── jcrop
+    │   │   ├── leaflet
+    │   │   ├── select2
+    │   │   ├── shots
+    │   │   ├── timeline
+    │   │   │   └── user-interface
+    │   │   ├── trumbowyg
+    │   │   ├── unsplash
+    │   │   ├── wefunction
+    │   │   └── xeditable
+    │   ├── js
+    │   │   ├── app
+    │   │   ├── common
+    │   │   │   ├── react
+    │   │   │   ├── react-bootstrap
+    │   │   │   ├── react-l20n
+    │   │   │   ├── react-responsive
+    │   │   │   ├── react-router
+    │   │   │   ├── rrouter
+    │   │   │   └── rubix
+    │   │   ├── demo
+    │   │   ├── minified
+    │   │   ├── polyfills
     │   │   └── vendor
     │   │       ├── blueimp-gallery
     │   │       ├── bootstrap
-    │   │       │   └── bootstrap
-    │   │       │       └── mixins
     │   │       ├── bootstrap-datetimepicker
-    │   │       ├── bootstrap-old
-    │   │       │   └── bootstrap
-    │   │       │       └── mixins
     │   │       ├── bootstrap-slider
     │   │       ├── c3js
-    │   │       ├── csstyle
+    │   │       ├── chartjs
+    │   │       ├── codemirror
+    │   │       │   ├── addon
+    │   │       │   │   ├── comment
+    │   │       │   │   ├── dialog
+    │   │       │   │   ├── display
+    │   │       │   │   ├── edit
+    │   │       │   │   ├── fold
+    │   │       │   │   ├── hint
+    │   │       │   │   ├── lint
+    │   │       │   │   ├── merge
+    │   │       │   │   ├── mode
+    │   │       │   │   ├── runmode
+    │   │       │   │   ├── scroll
+    │   │       │   │   ├── search
+    │   │       │   │   ├── selection
+    │   │       │   │   ├── tern
+    │   │       │   │   └── wrap
+    │   │       │   ├── bin
+    │   │       │   ├── demo
+    │   │       │   ├── doc
+    │   │       │   ├── keymap
+    │   │       │   ├── lib
+    │   │       │   ├── mode
+    │   │       │   │   ├── apl
+    │   │       │   │   ├── asterisk
+    │   │       │   │   ├── clike
+    │   │       │   │   ├── clojure
+    │   │       │   │   ├── cobol
+    │   │       │   │   ├── coffeescript
+    │   │       │   │   ├── commonlisp
+    │   │       │   │   ├── css
+    │   │       │   │   ├── cypher
+    │   │       │   │   ├── d
+    │   │       │   │   ├── diff
+    │   │       │   │   ├── django
+    │   │       │   │   ├── dtd
+    │   │       │   │   ├── dylan
+    │   │       │   │   ├── ecl
+    │   │       │   │   ├── eiffel
+    │   │       │   │   ├── erlang
+    │   │       │   │   ├── fortran
+    │   │       │   │   ├── gas
+    │   │       │   │   ├── gfm
+    │   │       │   │   ├── gherkin
+    │   │       │   │   ├── go
+    │   │       │   │   ├── groovy
+    │   │       │   │   ├── haml
+    │   │       │   │   ├── haskell
+    │   │       │   │   ├── haxe
+    │   │       │   │   ├── htmlembedded
+    │   │       │   │   ├── htmlmixed
+    │   │       │   │   ├── http
+    │   │       │   │   ├── jade
+    │   │       │   │   ├── javascript
+    │   │       │   │   ├── jinja2
+    │   │       │   │   ├── julia
+    │   │       │   │   ├── kotlin
+    │   │       │   │   ├── livescript
+    │   │       │   │   ├── lua
+    │   │       │   │   ├── markdown
+    │   │       │   │   ├── mirc
+    │   │       │   │   ├── mllike
+    │   │       │   │   ├── nginx
+    │   │       │   │   ├── ntriples
+    │   │       │   │   ├── octave
+    │   │       │   │   ├── pascal
+    │   │       │   │   ├── pegjs
+    │   │       │   │   ├── perl
+    │   │       │   │   ├── php
+    │   │       │   │   ├── pig
+    │   │       │   │   ├── properties
+    │   │       │   │   ├── puppet
+    │   │       │   │   ├── python
+    │   │       │   │   ├── q
+    │   │       │   │   ├── r
+    │   │       │   │   ├── rpm
+    │   │       │   │   │   └── changes
+    │   │       │   │   ├── rst
+    │   │       │   │   ├── ruby
+    │   │       │   │   ├── rust
+    │   │       │   │   ├── sass
+    │   │       │   │   ├── scheme
+    │   │       │   │   ├── shell
+    │   │       │   │   ├── sieve
+    │   │       │   │   ├── slim
+    │   │       │   │   ├── smalltalk
+    │   │       │   │   ├── smarty
+    │   │       │   │   ├── smartymixed
+    │   │       │   │   ├── solr
+    │   │       │   │   ├── sparql
+    │   │       │   │   ├── sql
+    │   │       │   │   ├── stex
+    │   │       │   │   ├── tcl
+    │   │       │   │   ├── tiddlywiki
+    │   │       │   │   ├── tiki
+    │   │       │   │   ├── toml
+    │   │       │   │   ├── turtle
+    │   │       │   │   ├── vb
+    │   │       │   │   ├── vbscript
+    │   │       │   │   ├── velocity
+    │   │       │   │   ├── verilog
+    │   │       │   │   ├── xml
+    │   │       │   │   ├── xquery
+    │   │       │   │   ├── yaml
+    │   │       │   │   └── z80
+    │   │       │   ├── test
+    │   │       │   │   └── lint
+    │   │       │   └── theme
+    │   │       ├── d3
     │   │       ├── datatables
     │   │       ├── dropzone
+    │   │       ├── eventemitter2
     │   │       ├── fullcalendar
-    │   │       ├── hubspot
-    │   │       ├── ion
+    │   │       │   ├── demos
+    │   │       │   │   ├── json
+    │   │       │   │   └── php
+    │   │       │   ├── lang
+    │   │       │   └── lib
+    │   │       │       └── cupertino
+    │   │       │           └── images
+    │   │       ├── gmaps
+    │   │       ├── holder
+    │   │       ├── ion.rangeSlider
+    │   │       ├── ion.tabs
     │   │       ├── jcrop
+    │   │       ├── jquery
+    │   │       ├── jquery-bootgrid
+    │   │       ├── jquery.knob
     │   │       ├── jquery-steps
+    │   │       ├── jquery-ui
+    │   │       │   └── external
+    │   │       │       └── jquery
+    │   │       ├── jquery-validate
+    │   │       ├── l20n
     │   │       ├── leaflet
+    │   │       ├── messenger
+    │   │       ├── moment
+    │   │       ├── morris
     │   │       ├── nestable
+    │   │       ├── pace
     │   │       ├── prism
-    │   │       ├── sass-list-maps
+    │   │       ├── p-scrollbar
+    │   │       │   ├── examples
+    │   │       │   ├── min
+    │   │       │   └── src
+    │   │       ├── raphael
     │   │       ├── select2
+    │   │       ├── sparklines
     │   │       ├── switchery
     │   │       ├── tablesaw
     │   │       ├── timeline
     │   │       ├── trumbowyg
+    │   │       │   ├── langs
+    │   │       │   └── plugins
+    │   │       │       ├── base64
+    │   │       │       └── upload
     │   │       ├── typeahead
+    │   │       ├── vex
     │   │       └── xeditable
-    │   └── vendor
-    │       ├── bootstrap
-    │       └── l20n
-    ├── jsx
-    │   ├── app
-    │   │   ├── common
-    │   │   ├── react-styles
-    │   │   │   └── src
-    │   │   └── routes
-    │   │       └── app
-    │   └── demo
-    │       ├── common
-    │       ├── react-styles
-    │       │   └── src
-    │       └── routes
-    │           └── app
-    │               ├── blog
-    │               ├── charts
-    │               │   └── rubix
-    │               ├── colors
-    │               ├── docs
-    │               │   ├── bootstrap
-    │               │   ├── common
-    │               │   └── snippets
-    │               └── fonts
-    └── sass
-        ├── app
-        │   ├── fonts
-        │   ├── pages
-        │   ├── print
-        │   └── theme
-        │       ├── components
-        │       └── sections
-        └── demo
-            ├── fonts
-            ├── pages
-            ├── print
-            └── theme
-                ├── components
-                └── sections
+    │   ├── locales
+    │   │   ├── app
+    │   │   │   └── en-US
+    │   │   └── demo
+    │   │       ├── ar
+    │   │       ├── ch
+    │   │       ├── en-US
+    │   │       ├── fr
+    │   │       ├── ge
+    │   │       └── it
+    │   └── video
+    │       └── homepage
+    └── src
+        ├── global
+        │   ├── requires
+        │   ├── sass
+        │   │   ├── rubix
+        │   │   │   ├── base
+        │   │   │   ├── layout
+        │   │   │   ├── module
+        │   │   │   └── overrides
+        │   │   └── vendor
+        │   │       ├── blueimp-gallery
+        │   │       ├── bootstrap
+        │   │       │   └── bootstrap
+        │   │       │       └── mixins
+        │   │       ├── bootstrap-datetimepicker
+        │   │       ├── bootstrap-old
+        │   │       │   └── bootstrap
+        │   │       │       └── mixins
+        │   │       ├── bootstrap-slider
+        │   │       ├── c3js
+        │   │       ├── csstyle
+        │   │       ├── datatables
+        │   │       ├── dropzone
+        │   │       ├── fullcalendar
+        │   │       ├── hubspot
+        │   │       ├── ion
+        │   │       ├── jcrop
+        │   │       ├── jquery-steps
+        │   │       ├── leaflet
+        │   │       ├── nestable
+        │   │       ├── prism
+        │   │       ├── sass-list-maps
+        │   │       ├── select2
+        │   │       ├── switchery
+        │   │       ├── tablesaw
+        │   │       ├── timeline
+        │   │       ├── trumbowyg
+        │   │       ├── typeahead
+        │   │       └── xeditable
+        │   └── vendor
+        │       ├── bootstrap
+        │       └── l20n
+        ├── jsx
+        │   ├── app
+        │   │   ├── common
+        │   │   ├── react-styles
+        │   │   │   └── src
+        │   │   └── routes
+        │   │       └── app
+        │   └── demo
+        │       ├── common
+        │       ├── react-styles
+        │       │   └── src
+        │       └── routes
+        │           └── app
+        │               ├── blog
+        │               ├── charts
+        │               │   └── rubix
+        │               ├── colors
+        │               ├── docs
+        │               │   ├── bootstrap
+        │               │   ├── common
+        │               │   └── snippets
+        │               └── fonts
+        └── sass
+            ├── app
+            │   ├── fonts
+            │   ├── pages
+            │   ├── print
+            │   └── theme
+            │       ├── components
+            │       └── sections
+            └── demo
+                ├── fonts
+                ├── pages
+                ├── print
+                └── theme
+                    ├── components
+                    └── sections
 
-355 directories
+360 directories
 </pre>
 
 Some of this content is to support building the theme for use outside of rails, but we don't needs those parts.  The author provides updates for his theme
