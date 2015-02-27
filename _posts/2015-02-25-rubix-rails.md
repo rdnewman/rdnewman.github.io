@@ -510,15 +510,3 @@ Go back under the `app/views/welcome/index.html.slim` view and add this line bel
 And, finally, test again.  The "This line was produced in ReactJS." text should appear in the green background of a Bootstrap success label.
 
 If so, we've demonstrated React and Bootstrap are installed and integrated.  We're ready to go on to getting Rubix integrated!
-
-<script type="text/javascript">
-<!--
-  function toggle_visibility(id) {
-    var e = document.getElementById(id);
-    if(e.style.display == 'block')
-      e.style.display = 'none';
-    else
-      e.style.display = 'block';
-  }
-//-->
-</script>
