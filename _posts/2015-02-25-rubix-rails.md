@@ -507,7 +507,7 @@ Go back under the `app/views/welcome/index.html.slim` view and add this line bel
 = react_component 'DemoLine', {}, :div
 ```
 
-And, finally, test again.  The "This line was produced in ReactJS." text should appear in a green background.
+And, finally, test again.  The "This line was produced in ReactJS." text should appear in the green background of a Bootstrap success label.
 
 If so, we've demonstrated React and Bootstrap are installed and integrated.  We're ready to go on to getting Rubix integrated!
 
