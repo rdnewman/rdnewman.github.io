@@ -15,7 +15,7 @@ So in the meantime, this post is the first of a series that describes an integra
 looking at the Rubix theme and decide a strategy for implementation.
 
 **UPDATE (3/10/2015): Sketchpixy has promised (see
-[his comments](https://wrapbootstrap.com/theme/rubix-reactjs-powered-admin-template-WB09498FH/comments#C24276on))
+[his comments of a week ago](https://wrapbootstrap.com/theme/rubix-reactjs-powered-admin-template-WB09498FH/comments#C24276on))
 to release a ready-for-Ruby version this theme within the next several days.  Once that is released,
 the second part of this posting will review that integration rather than try to integrate the current version of Rubix.**
 
