@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Integrating 'Rubix' Bootstrap theme into Rails 4.0 [Part 1]"
+title: "Integrating 'Rubix' Bootstrap theme into Rails 4.0"
 date: 2015-02-25
 comments: true
 tags: reactjs bootstrap rubix
@@ -13,6 +13,11 @@ stated that a gem for directly supporting Rubix is forthcoming, but no timeline 
 
 So in the meantime, this post is the first of a series that describes an integration implementation until the new gem is released.  We'll start by
 looking at the Rubix theme and decide a strategy for implementation.
+
+**UPDATE (3/10/2015): Sketchpixy has promised (see
+[his comments](https://wrapbootstrap.com/theme/rubix-reactjs-powered-admin-template-WB09498FH/comments#C24276on))
+to release a ready-for-Ruby version this theme within the next several days.  Once that is released,
+the second part of this posting will review that integration rather than try to integrate the current version of Rubix.**
 
 <img src='/images/WB09498FH.png'/>
 
