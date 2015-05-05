@@ -101,17 +101,18 @@ class Parser
 end
 ```
 
-This is actually simpler than Treetop.  Citrus can navigate the path to our 'dates.citrus' via $LOAD_PATH using its `require` method.  As long as the
+This is actually simpler than Treetop.  Citrus can navigate the path to our `dates.citrus` file from $LOAD_PATH using its `require` method.  As long as the
 grammar file extension is `.citrus`, we're good to go.  
 
 The `force` option in `.load` is to assure the grammer file gets reloaded each time.  In production, you probably
 wouldn't want that, but in development you might want to capture changes to your grammar without having to reload the environment.  Instead of
-`true`, we could use `Rails.env.development?` to change according to the context.  Note that you'll get some warning messages logged when force is on (which I won't show in the examples output), but it is nice to rapidly test grammar changes this way.
+`true`, we could use `Rails.env.development?` to change according to the context.  Note that you'll get some warning messages logged when force is on (which I won't show in the examples output),
+but it is nice to rapidly test grammar changes this way.
 
 The load creates an object by the same name as our grammer, so `Dates` is now available to call `parse` against. We don't need a variable to
 the parser, but `Citrus.load` does return an array of all the grammar objects created.  We could use the return value to get the parsing object we
 wanted, but there's no need here.   Just to illustrate, for this case, the two lines could be put together in one line as `Citrus.load(Citrus.require('dates'))[0].parse(data)`,
-but that's nowhere near as readable.
+but that's nowhere near as readable and, as you'll see later, something that you're unlikely to ever want to do.
 
 If we start up a console session, we can immediately work with it.  We'll give a deliberately invalid input to start.
 
@@ -134,7 +135,7 @@ abc
 ```
 
 In Treetop, we'd have to test for a nil response and then build an error message that was anything near as complete.  Like in Treetop, Citrus does include variables that give the line and offset so you could trap their exception
-and reraise your own with a custom error message.
+and reraise your own with a custom error message (see [here for an example of a similar error message in Treetop](http://whitequark.org/blog/2011/09/08/treetop-typical-errors/) -- look under "Fancy error reporting").
 
 
 Let's try something that should easily pass:
