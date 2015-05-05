@@ -85,7 +85,7 @@ end
 ```
 
 The syntax for Citrus is almost like Treetop. Instead of a slash to designate alternates, you use a bit more conventional vertical-bar symbol.  There are
-other differences, but this is a simple parser, so that main one we'll see here.
+other differences, but this is a simple parser, so that's the main one we'll see here.
 
 Next, we'll make a singleton model to contain our Parser.
 
