@@ -9,21 +9,21 @@ categories: coding
 
 [Michael Jackson's](https://github.com/mjackson) [Citrus](http://mjackson.github.io/citrus/) [gem](https://rubygems.org/gems/citrus/) is a general purpose
 parser generator for Ruby, an alternative to the popular [Treetop](http://treetop.rubyforge.org/index.html) [gem](https://rubygems.org/gems/treetop).
-I wanted to play with Citrus, so I wrote a toy date parser.  
+I wanted to play with Citrus, so I started with a toy date parser.  
 
 <!--more-->
 
-The Citrus [documentation](http://mjackson.github.io/citrus/example.html) goes over the rules for expressing a grammar well, but it doesn't seem to have a
-quick example of a full application of Citrus in action.   The full code from this example is on [Github](https://github.com/rdnewman/citrus-dates).
+The Citrus [documentation](http://mjackson.github.io/citrus/example.html) goes over the rules for expressing a grammar well, but there's not a self contained
+quick example of a full application with Citrus in action.   If you want to cut to the chase, the full code from this example is on [Github](https://github.com/rdnewman/citrus-dates).
 
-After making a new Rails app, just add the following to the `Gemfile` and then `bundle install`:
+To start, after making a new Rails app, just add the following to the `Gemfile` and then `bundle install`:
 
 ```rb
 gem 'citrus'
 ```
 
 For this example, I'm turning off almost everything related to Rails since I don't want to fuss with a database right now, but I'll keep ActionController
-just so Rails is still around.  Obviously, I could have just done this without including Rails at all, but this is just an example demo anyway.
+just so Rails is still around.  Obviously, I could have just done this without including Rails at all and everything would still work.
 
 ```ruby
 # in application.rb
@@ -85,9 +85,9 @@ end
 ```
 
 The syntax for Citrus is almost like Treetop. Instead of a slash to designate alternates, you use a bit more conventional vertical-bar symbol.  There are
-other differences, but this is a simple parser, so we won't hit them all.
+other differences, but this is a simple parser, so that main one we'll see here.
 
-Next, we'll make a singleton model to act as a Parser object.
+Next, we'll make a singleton model to contain our Parser.
 
 ```ruby
 # in models/parser.rb
@@ -104,17 +104,16 @@ end
 This is actually simpler than Treetop.  Citrus can navigate the path to our 'dates.citrus' via $LOAD_PATH using its `require` method.  As long as the
 grammar file extension is `.citrus`, we're good to go.  
 
-The `force` option is to assure the file gets reloaded each time.  In production, you probably
-wouldn't want that, but in development you would because you want to capture changes to your grammar without having to reload the environment.  Instead of
-`true`, we could use `Rails.env.development?` to change according to the context.  You'll get some warning messages logged when force is on, but at least you
-can rapidly test grammar changes this way.
+The `force` option in `.load` is to assure the grammer file gets reloaded each time.  In production, you probably
+wouldn't want that, but in development you might want to capture changes to your grammar without having to reload the environment.  Instead of
+`true`, we could use `Rails.env.development?` to change according to the context.  Note that you'll get some warning messages logged when force is on (which I won't show in the examples output), but it is nice to rapidly test grammar changes this way.
 
 The load creates an object by the same name as our grammer, so `Dates` is now available to call `parse` against. We don't need a variable to
-the parser, but `Citrus.load` does return an array of all the grammar objects created, so we could use the return value to get the parsing object we
-wanted, but there's no need.   Just to illustrate, the two lines could be put together in one line as `Citrus.load(Citrus.require('dates'))[0].parse(data)`,
+the parser, but `Citrus.load` does return an array of all the grammar objects created.  We could use the return value to get the parsing object we
+wanted, but there's no need here.   Just to illustrate, for this case, the two lines could be put together in one line as `Citrus.load(Citrus.require('dates'))[0].parse(data)`,
 but that's nowhere near as readable.
 
-If we start up a console session, we can immediate try working with it.  We'll give a deliberately invalid input to start.
+If we start up a console session, we can immediately work with it.  We'll give a deliberately invalid input to start.
 
 ```bash
 $ rails c
@@ -134,8 +133,8 @@ abc
         from (irb):14
 ```
 
-In Treetop, we'd have to test for a nil response and then build an error message that was anything near as complete.  OTOH, to customize this one,  
-we'd probably have to trap the exception and reraise it with our own message or maybe even a custom error inherited from `Citrus::SyntaxError`.
+In Treetop, we'd have to test for a nil response and then build an error message that was anything near as complete.  Like in Treetop, Citrus does include variables that give the line and offset so you could trap their exception
+and reraise your own with a custom error message.
 
 
 Let's try something that should easily pass:
@@ -154,9 +153,19 @@ Citrus::SyntaxError: Malformed Citrus syntax on line 1 at offset 1
 
 Obviously we can write proper unit tests and make sure the grammer is correct, but let's move on.
 
-So our valid line just returned a string.  We had that already so hardly very interesting.  Now we'll hookup some logic.
 
-Let's replace the first four rules in our grammar `dates.citrus` file with these contents:
+Let's go back to the valid one and look closer by assigning the result of the parsing to a variable:
+
+```
+2.2.0 :004 > date = Parser.parse('3/14/2015')
+=> "3/14/2015"
+2.2.0 :005 > date.value
+=> "3/14/2015"
+```
+
+So our valid line just returned a string.  We had that already to start with so this isn't very interesting other than to confirm it was a valid entry.  We need to hookup some logic.
+
+Replace the first four rules in our grammar `dates.citrus` file with these contents:
 
 ```
   rule dateMDY
@@ -178,31 +187,26 @@ Let's replace the first four rules in our grammar `dates.citrus` file with these
   end
 ```
 
-There are two main things to notice.  First, each of the rules now has a logic block.  These blocks will be invoked by calling the `.value` method on the
-return value from the `.parse` method.  Second, to set the blocks, we first had to enclose the rules in a set of parentheses; otherwise, the block would have
-applied to the last element in the rule.
+There are two main things to notice.  First, each of the rules now has a logic block.  These blocks are invoked in order by calling the `.value` method on the
+return value when parsed.  Second, to set the blocks, we first had to enclose the rules in a set of parentheses; otherwise, the block would have
+applied to the last element in the rule (similar to Treetop).
 
 To read the blocks, start with the subordinate `month`, `day`, and `year` rules.  Those will render integer values correponding to the numeric value parsed.
-Then in the topmost `dateMDY` rule, we `capture` those parts and take their values to construct a Ruby `Time` object.
+In the topmost `dateMDY` rule, we then`capture` those parts and take their values to construct a Ruby `Time` object.
 
 Let's try it.
 
 ```
-2.2.0 :004 > date = Parser.parse('3/14/2015')
+2.2.0 :006 > date = Parser.parse('3/14/2015')
  => "3/14/2015"
-```
-
-It seems to return a string, but let's try the new `date` variable that we used to assign the return value to.
-
-```
-2.2.0 :005 > date.value
+2.2.0 :007 > date.value
  => 2015-03-14 00:00:00 -0600
 ```
 
 And it worked!  So now, we're capturing actual Ruby Time objects directly from the parser.
 
-A few final notes.  First, the logic for our `year` rule should be improved to add the current century if the integer parsed is less than 100.  That way we
-can properly handle convering two-digit year entries into the Time objects appropriately.   Second, Citrus can handle a lot more involved function and method
+A few final notes for this example.  First, the logic for our `year` rule should be improved to add the current century if the integer parsed is less than 100.  That way we
+can properly handle converting two-digit year entries into the Time objects appropriately.   Second, Citrus can handle a lot more involved function and method
 specifications than what is demonstrated here.  Please check out their documentation.
 
 And third?  Well, look!  We didn't need to make a dedicated `Parser` object!  All we needed were these two lines:
@@ -213,6 +217,6 @@ And third?  Well, look!  We didn't need to make a dedicated `Parser` object!  Al
 ```
 
 We could have just as easily put them into a controller method or anywhere we wanted parsing to occur.  Given that the `.load` method of Citrus loads all the
-grammars, you can see loading them all in `ApplicationController` and then just invoke the `<Grammer>.parse` method from whereever desired when needed.
+grammars, you can see loading them all in `ApplicationController` and then just invoke the `<Grammer>.parse` method from whereever desired in any controller.
 
 Pretty nifty.
