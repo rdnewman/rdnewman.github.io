@@ -210,7 +210,7 @@ A few final notes for this example.  First, the logic for our `year` rule should
 can properly handle converting two-digit year entries into the Time objects appropriately.   Second, Citrus can handle a lot more involved function and method
 specifications than what is demonstrated here.  Please check out their documentation.
 
-And third?  Well, look!  We didn't need to make a dedicated `Parser` object!  All we needed were these two lines:
+And third?  Well, look!  We didn't need to make a dedicated `Parser` object.  All we needed were these two lines:
 
 ```ruby
     Citrus.load(Citrus.require('dates'), force: true)
