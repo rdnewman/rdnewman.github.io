@@ -22,8 +22,8 @@ To start, after making a new Rails app, just add the following to the `Gemfile` 
 gem 'citrus'
 ```
 
-For this example, I'm turning off almost everything related to Rails since I don't want to fuss with a database right now, but I'll keep ActionController
-just so Rails is still around.  Obviously, I could have just done this without including Rails at all and everything would still work.
+For this example, I'm turning off almost everything related to Rails since I don't want to fuss with a database right now, but I'll keep *ActionController*
+just so Rails is still around.  Obviously, I could have just done this example without including Rails at all and everything would still work.
 
 ```ruby
 # in application.rb
