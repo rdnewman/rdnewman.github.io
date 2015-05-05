@@ -155,7 +155,8 @@ Citrus::SyntaxError: Malformed Citrus syntax on line 1 at offset 1
 Obviously we can write proper unit tests and make sure the grammer is correct, but let's move on.
 
 
-Let's go back to the valid one and look closer by assigning the result of the parsing to a variable:
+Let's go back to the valid one and look closer by assigning the result of the parsing to a variable.  You see the interpreted result
+of the parsing by calling `.value` against the return value.
 
 ```
 2.2.0 :004 > date = Parser.parse('3/14/2015')
@@ -166,7 +167,7 @@ Let's go back to the valid one and look closer by assigning the result of the pa
 
 So our valid line just returned a string.  We had that already to start with so this isn't very interesting other than to confirm it was a valid entry.  We need to hookup some logic.
 
-Replace the first four rules in our grammar `dates.citrus` file with these contents:
+Replace the first four rules in our grammar `dates.citrus` file with these contents.  The grammar won't change, but now we have some logic.
 
 ```
   rule dateMDY
@@ -204,7 +205,7 @@ Let's try it.
  => 2015-03-14 00:00:00 -0600
 ```
 
-And it worked!  So now, we're capturing actual Ruby Time objects directly from the parser.
+And it worked!  So now, we're capturing Ruby Time objects directly from the parser.
 
 A few final notes for this example.  First, the logic for our `year` rule should be improved to add the current century if the integer parsed is less than 100.  That way we
 can properly handle converting two-digit year entries into the Time objects appropriately.   Second, Citrus can handle a lot more involved function and method
