@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Example for Citrus parsing"
+title: "Quick example of Citrus parsing"
 date: 2015-05-04
 comments: true
-tags: rails citrus
+tags: rails citrus parsing
 categories: coding
 ---
 
