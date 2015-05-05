@@ -14,7 +14,7 @@ I wanted to play with Citrus, so I wrote a toy date parser.
 <!--more-->
 
 The Citrus [documentation](http://mjackson.github.io/citrus/example.html) goes over the rules for expressing a grammar well, but it doesn't seem to have a
-quick example of a full application of Citrus in action.   The full code is on [Github](https://github.com/rdnewman/citrus-dates).
+quick example of a full application of Citrus in action.   The full code from this example is on [Github](https://github.com/rdnewman/citrus-dates).
 
 After making a new Rails app, just add the following to the `Gemfile` and then `bundle install`:
 
