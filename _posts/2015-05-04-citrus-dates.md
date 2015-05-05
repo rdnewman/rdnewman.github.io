@@ -208,8 +208,9 @@ Let's try it.
 And it worked!  So now, we're capturing Ruby Time objects directly from the parser.
 
 A few final notes for this example.  First, the logic for our `year` rule should be improved to add the current century if the integer parsed is less than 100.  That way we
-can properly handle converting two-digit year entries into the Time objects appropriately.   Second, Citrus can handle a lot more involved function and method
-specifications than what is demonstrated here.  Please check out their documentation.
+can properly handle converting two-digit year entries into the Time objects appropriately.   This is just a toy example; there's a lot more we could do to support date (and time) parsing (e.g., month names).
+
+Second, Citrus can handle a lot more involved method specifications than what is demonstrated here.  Please check out their documentation.
 
 And third?  Well, look!  We didn't need to make a dedicated `Parser` object.  All we needed were these two lines:
 
